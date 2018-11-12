@@ -1,6 +1,7 @@
 import cv2
 import imutils
 import numpy as np
+import argparse
 
 from contours import find_screen_contour
 from transform import create_edged_image, create_scanned_image
@@ -54,4 +55,10 @@ def scan_image(path: str, show_steps=True) -> None:
 
 
 if __name__ == '__main__':
-    scan_image("receipt.jpg")
+    ap = argparse.ArgumentParser()
+    ap.add_argument("-i", "--image", required = True,
+                    help = "Path to the image to be scanned")
+    args = ap.parse_args()
+
+
+    scan_image(args.image)
