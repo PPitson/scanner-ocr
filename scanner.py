@@ -33,7 +33,8 @@ def show_step_3(original_image: np.ndarray, scanned_image: np.ndarray) -> None:
 
 def scan_image(path: str, show_steps=True) -> None:
     height = 600
-    image = cv2.imread(path)
+    img = cv2.imread(path)
+    image = cv2.copyMakeBorder(img,15,15,15,15,cv2.BORDER_CONSTANT,None,[0,0,0])
     original_image = image.copy()
     height_ratio = image.shape[0] / float(height)
     image = imutils.resize(image, height=height)
