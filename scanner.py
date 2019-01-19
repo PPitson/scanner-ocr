@@ -2,6 +2,7 @@ import cv2
 import imutils
 import numpy as np
 import argparse
+import os
 
 from contours import find_screen_contour
 from transform import create_edged_image, create_scanned_image
@@ -31,7 +32,7 @@ def show_step_3(original_image: np.ndarray, scanned_image: np.ndarray) -> None:
     cv2.waitKey(0)
 
 
-def scan_image(path: str, show_steps=True) -> None:
+def scan_image(path: str, show_steps=True) -> np.ndarray:
     height = 600
     img = cv2.imread(path)
     image = cv2.copyMakeBorder(img,15,15,15,15,cv2.BORDER_CONSTANT,None,[0,0,0])
@@ -51,8 +52,9 @@ def scan_image(path: str, show_steps=True) -> None:
     if show_steps:
         show_step_3(original_image, scanned_image)
 
-    result_file_name = path[:path.index(".")] + "_result" + path[path.index("."):]
+    result_file_name = "/tmp/result_" + os.path.basename(path) 
     cv2.imwrite(result_file_name, scanned_image)
+    return scanned_image
 
 
 if __name__ == '__main__':
@@ -62,4 +64,4 @@ if __name__ == '__main__':
     args = ap.parse_args()
 
 
-    scan_image(args.image)
+    scan_image(args.image, False)
