@@ -25,6 +25,11 @@ Tutorials used during implementation:
 
 ## OCR step
 
+ - We get area of price list(e.g. selected by user in mobile app). 
+ - Area is divided into names column and prices column. 
+ - Text in each column is recognized using `SINGLE_BLOCK` mode in Tesseract. 
+ - Text from both columns is assembled into final table
+
 ## Example
 
 - image after edge detection: 
@@ -65,3 +70,4 @@ D_SAtATA.OZDOBNA MI           3.49
 D_WrOSZCZYZNA TACKA           3.0
 Sum: 116.26
 ```
+
