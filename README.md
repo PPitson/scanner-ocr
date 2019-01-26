@@ -1,9 +1,8 @@
 # scanner-ocr
 
 ## Installation
-```
-pip install -r requirements.txt
-```
+- Install tesseract (see [instructions](https://github.com/tesseract-ocr/tesseract/wiki))
+- `pip install -r requirements.txt`
 
 ## Scanning step
 
