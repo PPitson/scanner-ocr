@@ -14,9 +14,9 @@ Scanning process has been further divided into 3 steps:
   - use Canny algorithm to detect edges (`auto_canny` from `imutils`, which uses `cv2.Canny`)
 - finding contours
   - find approximation of contours as a polygon (`cv2.findContours` and `cv2.approxPolyDP`)
-  - if polygon is a rectangle - return, else find a minimum rectangle inscribed in the polygon (`cv2.minAreaRect`)
+  - if polygon has 4 sides - finish, else find a minimum rectangle inscribed in the polygon (`cv2.minAreaRect`)
 - applying perspective transformation
-  - obtain "bird's eye view" (`cv2.getPerspectiveTransform` and `cv2.warpPerspective`)
+  - obtain "bird's eye view" of the image (`cv2.getPerspectiveTransform` and `cv2.warpPerspective`)
   - give image a "black and white feel" as if it was a result of using a real scanner (`threshold_local` from `scikit-image`)
 
 Tutorials used during implementation:
